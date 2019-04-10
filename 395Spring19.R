@@ -150,13 +150,14 @@ ggplot(data = pca_w_df, aes(x = PC1, y = PC2)) +
 
 # create new speciesTraits dataframe unique to i and w (so that they have the same number of rows)
 
-speciesTraits_i = data.frame(species = c("Bald Eagle", "Broad-winged Hawk", "Common Black Hawk", "Cooper's Hawk", "Golden Eagle", "Great Horned Owl", "Northern Harrier", "Mississippi Kite", "Northern Goshawk", "Red-tailed Hawk", "Rough-legged Hawk", "Sharp-shinned Hawk", "Short-eared Owl", "Swainson's Hawk", "mite", "Barred Owl", "Boreal Owl", "Burrowing Owl", "Eastern Screech-Owl", "Great Gray Owl", "Long-eared Owl", "Northern Hawk Owl", "Northern Pygmy-Owl", "Northern Saw-whet Owl", "Spotted Owl", "Western Screech-Owl"), activity = 'diurnal')
+speciesTraits_i = data.frame(species = c("Bald Eagle", "Broad-winged Hawk", "Common Black Hawk", "Cooper's Hawk", "Golden Eagle", "Great Horned Owl", "Northern Harrier", "Mississippi Kite", "Northern Goshawk", "Red-tailed Hawk", "Rough-legged Hawk", "Sharp-shinned Hawk", "Short-eared Owl", "Swainson's Hawk", "Barred Owl", "Boreal Owl", "Burrowing Owl", "Eastern Screech-Owl", "Great Gray Owl", "Long-eared Owl", "Northern Hawk Owl", "Northern Pygmy-Owl", "Northern Saw-whet Owl", "Spotted Owl", "Western Screech-Owl"), activity = 'diurnal')
 speciesTraits_i$activity = as.character(speciesTraits_i$activity)
 speciesTraits_i$activity[speciesTraits_i$species %in% owls] = 'nocturnal'
 speciesTraits_i$actColor = 'blue'
 speciesTraits_i$actColor[speciesTraits_i$activity == 'nocturnal'] = 'red'
+speciesTraits_i = speciesTraits_i[-c("mite"), ]
 
-speciesTraits_w = data.frame(species = c("Bald Eagle", "Broad-winged Hawk", "Cooper's Hawk", "Golden Eagle", "Great Horned Owl", "Northern Harrier", "Northern Goshawk", "Red-tailed Hawk", "White-tailed Hawk", "Short-eared Owl", "Swainson's Hawk", "mite", "White-tailed Eagle", "Flammulated Owl", "Great Gray Owl", "Long-eared Owl", "Northern Hawk Owl", "Western Screech-Owl"), activity = 'diurnal')
+speciesTraits_w = data.frame(species = c("Bald Eagle", "Broad-winged Hawk", "Cooper's Hawk", "Golden Eagle", "Great Horned Owl", "Northern Harrier", "Northern Goshawk", "Red-tailed Hawk", "White-tailed Hawk", "Short-eared Owl", "Swainson's Hawk", "White-tailed Eagle", "Flammulated Owl", "Great Gray Owl", "Long-eared Owl", "Northern Hawk Owl", "Western Screech-Owl"), activity = 'diurnal')
 speciesTraits_w$activity = as.character(speciesTraits_w$activity)
 speciesTraits_w$activity[speciesTraits_w$species %in% owls] = 'nocturnal'
 speciesTraits_w$actColor = 'blue'
@@ -164,14 +165,14 @@ speciesTraits_w$actColor[speciesTraits_w$activity == 'nocturnal'] = 'red'
 
 # create speciesSize data frame for i and w
 
-speciesSize_i = data.frame(species = c("Bald Eagle", "Broad-winged Hawk", "Common Black Hawk", "Cooper's Hawk", "Golden Eagle", "Great Horned Owl", "Northern Harrier", "Mississippi Kite", "Northern Goshawk", "Red-tailed Hawk", "Rough-legged Hawk", "Sharp-shinned Hawk", "Short-eared Owl", "Swainson's Hawk", "mite", "Barred Owl", "Boreal Owl", "Burrowing Owl", "Eastern Screech-Owl", "Great Gray Owl", "Long-eared Owl", "Northern Hawk Owl", "Northern Pygmy-Owl", "Northern Saw-whet Owl", "Spotted Owl", "Western Screech-Owl"))
-speciesSize_i$size = c('>800g', '<800g', '<800g', '<800g', '>800g', '>800g', '<800g', '<800g', '>800g', '>800g', '>800g', '<800g', '<800g', '>800g', '<800g', '<800g', '<800g', '<800g', '<800g', '>800g', '<800g', '<800g', '<800g', '<800g', '<800g', '<800g')
+speciesSize_i = data.frame(species = c("Bald Eagle", "Broad-winged Hawk", "Common Black Hawk", "Cooper's Hawk", "Golden Eagle", "Great Horned Owl", "Northern Harrier", "Mississippi Kite", "Northern Goshawk", "Red-tailed Hawk", "Rough-legged Hawk", "Sharp-shinned Hawk", "Short-eared Owl", "Swainson's Hawk", "Barred Owl", "Boreal Owl", "Burrowing Owl", "Eastern Screech-Owl", "Great Gray Owl", "Long-eared Owl", "Northern Hawk Owl", "Northern Pygmy-Owl", "Northern Saw-whet Owl", "Spotted Owl", "Western Screech-Owl"))
+speciesSize_i$size = c('>800g', '<800g', '<800g', '<800g', '>800g', '>800g', '<800g', '<800g', '>800g', '>800g', '>800g', '<800g', '<800g', '>800g', '<800g', '<800g', '<800g', '<800g', '>800g', '<800g', '<800g', '<800g', '<800g', '<800g', '<800g')
 speciesSize_i$size = as.character(speciesSize_i$size)
 speciesSize_i$sizeColor = 'purple'
 speciesSize_i$sizeColor[speciesSize_i$size == '<800g'] = 'green'
 
-speciesSize_w = data.frame(species = c("Bald Eagle", "Broad-winged Hawk", "Cooper's Hawk", "Golden Eagle", "Great Horned Owl", "Northern Harrier", "Northern Goshawk", "Red-tailed Hawk", "White-tailed Hawk", "Short-eared Owl", "Swainson's Hawk", "mite", "White-tailed Eagle", "Flammulated Owl", "Great Gray Owl", "Long-eared Owl", "Northern Hawk Owl", "Western Screech-Owl"))
-speciesSize_w$size = c('>800g', '<800g', '<800g', '>800g', '>800g', '<800g', '>800g', '>800g', '>800g', '<800g', '>800g', '<800g', '>800g', '<800g', '>800g', '<800g', '<800g', '<800g')
+speciesSize_w = data.frame(species = c("Bald Eagle", "Broad-winged Hawk", "Cooper's Hawk", "Golden Eagle", "Great Horned Owl", "Northern Harrier", "Northern Goshawk", "Red-tailed Hawk", "White-tailed Hawk", "Short-eared Owl", "Swainson's Hawk", "White-tailed Eagle", "Flammulated Owl", "Great Gray Owl", "Long-eared Owl", "Northern Hawk Owl", "Western Screech-Owl"))
+speciesSize_w$size = c('>800g', '<800g', '<800g', '>800g', '>800g', '<800g', '>800g', '>800g', '>800g', '<800g', '>800g', '>800g', '<800g', '>800g', '<800g', '<800g', '<800g')
 speciesSize_w$size = as.character(speciesSize_w$size)
 speciesSize_w$sizeColor = 'purple'
 speciesSize_w$sizeColor[speciesSize_w$size == '<800g'] = 'green'
@@ -199,8 +200,8 @@ plot_i_activity = ggbiplot(pca_i, groups = speciesTraits_i$activity, varname.siz
 plot_i_activity = ggplot_build(plot_i_activity)
 
   #remove arrows for species that aren't significant
-plot_i_activity$data[[1]] <- plot_i_activity$data[[1]][c(4, 13, 19, 30, 35:36, 44, 59), ]
-plot_i_activity$data[[3]] <- plot_i_activity$data[[3]][c(4, 13, 19, 30, 35:36, 44, 59), ]
+plot_i_activity$data[[1]] <- plot_i_activity$data[[1]][c(4, 12, 17, 26, 31:32, 40, 54), ]
+plot_i_activity$data[[3]] <- plot_i_activity$data[[3]][c(4, 12, 17, 26, 31:32, 40, 54), ]
 
   #re-plot with significant arrows
 plot(ggplot_gtable(plot_i_activity))
@@ -213,8 +214,8 @@ plot_w_activity = ggbiplot(pca_w, groups = speciesTraits_w$activity, varname.siz
 plot_w_activity = ggplot_build(plot_w_activity)
 
   #remove arrows for species that aren't significant
-plot_w_activity$data[[1]] <- plot_w_activity$data[[1]][c(3, 16, 19, 25), ]
-plot_w_activity$data[[3]] <- plot_w_activity$data[[3]][c(3, 16, 19, 25), ]
+plot_w_activity$data[[1]] <- plot_w_activity$data[[1]][c(1, 3, 16, 19, 25), ]
+plot_w_activity$data[[3]] <- plot_w_activity$data[[3]][c(1, 3, 16, 19, 25), ]
 
   #re-plot with significant arrows
 plot(ggplot_gtable(plot_w_activity))
@@ -233,8 +234,8 @@ plot_i_size = ggbiplot(pca_i, groups = speciesSize_i$size, varname.size = 0) +
 plot_i_size = ggplot_build(plot_i_size)
 
   #remove arrows for species that aren't significant
-plot_i_size$data[[1]] <- plot_i_size$data[[1]][c(4, 13, 19, 30, 35:36, 44, 59), ]
-plot_i_size$data[[3]] <- plot_i_size$data[[3]][c(4, 13, 19, 30, 35:36, 44, 59), ]
+plot_i_size$data[[1]] <- plot_i_size$data[[1]][c(4, 12, 17, 26, 31:32, 40, 54), ]
+plot_i_size$data[[3]] <- plot_i_size$data[[3]][c(4, 12, 17, 26, 31:32, 40, 54), ]
 
   #re-plot with significant arrows
 plot(ggplot_gtable(plot_i_size))
@@ -242,17 +243,20 @@ plot(ggplot_gtable(plot_i_size))
 # ggbiplot of pca_w colored by size
 plot_w_size = ggbiplot(pca_w, groups = speciesSize_w$size, varname.size = 0) + 
   scale_color_manual(name="", values=c("purple", "darkgreen")) + 
-  theme_classic() + theme(legend.title=element_blank()) + xlim(-4, 4) + ylim(-4, 4)
+  theme_classic() + theme(legend.title=element_blank()) + xlim(-3, 3) + ylim(-3, 3)
 
   #get ggplot2 object
 plot_w_size = ggplot_build(plot_w_size)
 
   #remove arrows for species that aren't significant
-plot_w_size$data[[1]] <- plot_w_size$data[[1]][c(3, 16, 19, 25), ]
-plot_w_size$data[[3]] <- plot_w_size$data[[3]][c(3, 16, 19, 25), ]
+plot_w_size$data[[1]] <- plot_w_size$data[[1]][c(1, 3, 16, 19, 25), ]
+plot_w_size$data[[3]] <- plot_w_size$data[[3]][c(1, 3, 16, 19, 25), ]
 
   #re-plot with significant arrows
 plot(ggplot_gtable(plot_w_size))
 
 # multi-regression model
+math_data_i = read.csv("395Mathematical_Model_Data_i.csv", header = TRUE)
+math_data_w = read.csv("395Mathematical_Model_Data_w.csv", header = TRUE)
+
 mod <- lm(Species ~ F_mass + F_wing + Wing_loading + F_tarsus + Wing_loading.F_tarsus, data = math_data_i)
