@@ -255,11 +255,19 @@ plot_w_size$data[[3]] <- plot_w_size$data[[3]][c(1, 3, 16, 19, 25), ]
   #re-plot with significant arrows
 plot(ggplot_gtable(plot_w_size))
 
-# multi-regression models
+# multi-regression model data
 math_data_i = read.csv("395Mathematical_Model_Data_i.csv", header = TRUE)
 math_data_w = read.csv("395Mathematical_Model_Data_w.csv", header = TRUE)
 
+# models for i
 lm_pc1_i <- lm(pc1 ~ f_mass + f_wing + wing_loading + f_tarsus + wing_tarsus, data = math_data_i)
 summary(lm_pc1_i)
 lm_pc2_i <- lm(pc2 ~ f_mass + f_wing + wing_loading + f_tarsus + wing_tarsus, data = math_data_i)
 summary(lm_pc2_i)
+
+# models for w
+lm_pc1_w <- lm(pc1 ~ f_mass + f_wing + wing_loading + f_tarsus + wing_tarsus, data = math_data_w)
+summary(lm_pc1_w)
+lm_pc2_w <- lm(pc2 ~ f_mass + f_wing + wing_loading + f_tarsus + wing_tarsus, data = math_data_w)
+summary(lm_pc2_w)
+
