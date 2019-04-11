@@ -193,7 +193,7 @@ sig_sp_i = subset(pca_i$rotation, abs(pca_i$rotation[,1]) >= 0.1 | abs(pca_i$rot
 sig_sp_w = subset(pca_w$rotation, abs(pca_w$rotation[,1]) >= 0.1 | abs(pca_w$rotation[,2]) >=0.1)
 
 #ggbiplot for i colored by activity
-plot_i_activity = ggbiplot(pca_i, groups = speciesTraits_i$activity, varname.size = 0) + 
+plot_i_activity = ggbiplot(pca_i, groups = speciesTraits_i$activity, varname.size = 0) +
   theme_classic() + theme(legend.title=element_blank()) + xlim(-3, 3) + ylim(-3, 3)
 
   #get ggplot2 object
@@ -260,14 +260,14 @@ math_data_i = read.csv("395Mathematical_Model_Data_i.csv", header = TRUE)
 math_data_w = read.csv("395Mathematical_Model_Data_w.csv", header = TRUE)
 
 # models for i
-lm_pc1_i <- lm(pc1 ~ f_mass + f_wing + wing_loading + f_tarsus + wing_tarsus, data = math_data_i)
+lm_pc1_i <- lm(pc1 ~ f_mass + f_wing + f_tarsus + wing_tarsus, data = math_data_i)
 summary(lm_pc1_i)
-lm_pc2_i <- lm(pc2 ~ f_mass + f_wing + wing_loading + f_tarsus + wing_tarsus, data = math_data_i)
+lm_pc2_i <- lm(pc2 ~ f_mass + f_wing + f_tarsus + wing_tarsus, data = math_data_i)
 summary(lm_pc2_i)
 
 # models for w
-lm_pc1_w <- lm(pc1 ~ f_mass + f_wing + wing_loading + f_tarsus + wing_tarsus, data = math_data_w)
+lm_pc1_w <- lm(pc1 ~ f_mass + f_wing + f_tarsus + wing_tarsus, data = math_data_w)
 summary(lm_pc1_w)
-lm_pc2_w <- lm(pc2 ~ f_mass + f_wing + wing_loading + f_tarsus + wing_tarsus, data = math_data_w)
+lm_pc2_w <- lm(pc2 ~ f_mass + f_wing + f_tarsus + wing_tarsus, data = math_data_w)
 summary(lm_pc2_w)
 
