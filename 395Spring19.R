@@ -37,12 +37,11 @@ spCountByFamily = data.frame(table(species$Family))
   # Short-tailed Hawk
   # Snail Kite
   # Swainson's Hawk
-  # mite
   # Swallow-tailed Kite
   # White-tailed Eagle
   # White-tailed Kite
   # Zone-tailed Hawk
-# Total number of species = 26
+# Total number of species = 25
 
 # Nocturnal raptors of interest (Family Strigidae) by Common Name
   # Great Horned Owl
